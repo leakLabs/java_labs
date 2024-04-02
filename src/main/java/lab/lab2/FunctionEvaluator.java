@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Класс для вычисления значений базовых математических функций.
+ * Поддерживает функции, такие как sin, cos, log.
+ */
 public class FunctionEvaluator {
     private final Map<String, Function<Double, Double>> functions = new HashMap<>();
 
@@ -17,6 +21,13 @@ public class FunctionEvaluator {
         return functions;
     }
 
+    /**
+     * Вычисляет значение указанной функции с данным аргументом.
+     *
+     * @param functionName имя функции для вычисления.
+     * @param argument аргумент функции.
+     * @return результат вычисления функции.
+     */
     public double evaluate(String functionName, double argument) {
         if (!functions.containsKey(functionName)) {
             throw new IllegalArgumentException("Неизвестная функция: " + functionName);

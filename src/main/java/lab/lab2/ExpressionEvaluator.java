@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+/**
+ * Класс для вычисления арифметических выражений.
+ * Преобразует инфиксное выражение в постфиксное (обратную польскую нотацию) и вычисляет его.
+ */
 public class ExpressionEvaluator {
     private final VariableResolver variableResolver;
     private final FunctionEvaluator functionEvaluator;
@@ -16,11 +20,24 @@ public class ExpressionEvaluator {
             "/", 2
     );
 
+    /**
+     * Конструктор класса.
+     *
+     * @param variableResolver объект для разрешения переменных.
+     * @param functionEvaluator объект для вычисления функций.
+     */
     public ExpressionEvaluator(VariableResolver variableResolver, FunctionEvaluator functionEvaluator) {
         this.variableResolver = variableResolver;
         this.functionEvaluator = functionEvaluator;
     }
 
+    /**
+     * Вычисляет значение арифметического выражения.
+     *
+     * @param expression строка, содержащая выражение для вычисления.
+     * @return результат вычисления выражения.
+     * @throws IllegalArgumentException если выражение некорректно.
+     */
     public double evaluate(String expression) {
         List<String> postfix = infixToPostfix(expression);
         return evaluatePostfix(postfix);

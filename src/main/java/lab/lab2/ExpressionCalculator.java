@@ -2,6 +2,10 @@ package lab.lab2;
 
 import java.util.Scanner;
 
+/**
+ * Основной класс калькулятора для вычисления арифметических выражений.
+ * Поддерживает числа, операции (+, -, *, /), скобки, переменные и базовые математические функции (sin, cos, log).
+ */
 public class ExpressionCalculator {
     private ExpressionCalculator() {
     }
