@@ -8,34 +8,46 @@ import java.util.Objects;
  * отдел, зарплату и дату рождения.
  */
 public class Employee {
-    /** Идентификатор сотрудника. */
+    /**
+     * Идентификатор сотрудника.
+     */
     private long id;
 
-    /** Имя сотрудника. */
+    /**
+     * Имя сотрудника.
+     */
     private String name;
 
-    /** Пол сотрудника. */
+    /**
+     * Пол сотрудника.
+     */
     private String gender;
 
-    /** Отдел, в котором работает сотрудник. */
+    /**
+     * Отдел, в котором работает сотрудник.
+     */
     private Department department;
 
-    /** Зарплата сотрудника. */
+    /**
+     * Зарплата сотрудника.
+     */
     private long salary;
 
-    /** Дата рождения сотрудника. */
+    /**
+     * Дата рождения сотрудника.
+     */
     private LocalDate birthDate;
 
     /**
      * Конструктор для создания нового сотрудника.
      * Все параметры должны быть не null.
      *
-     * @param id Идентификатор сотрудника.
-     * @param name Имя сотрудника. Не может быть null.
-     * @param gender Пол сотрудника. Не может быть null.
+     * @param id         Идентификатор сотрудника.
+     * @param name       Имя сотрудника. Не может быть null.
+     * @param gender     Пол сотрудника. Не может быть null.
      * @param department Отдел, в котором работает сотрудник. Не может быть null.
-     * @param salary Зарплата сотрудника.
-     * @param birthDate Дата рождения сотрудника. Не может быть null.
+     * @param salary     Зарплата сотрудника.
+     * @param birthDate  Дата рождения сотрудника. Не может быть null.
      */
     public Employee(long id, String name, String gender, Department department, long salary, LocalDate birthDate) {
         Objects.requireNonNull(name);
@@ -172,5 +184,36 @@ public class Employee {
         return "id: " + id + "\n name: " + name + "\n gender: " + gender
                 + "\n department: " + department.getId() + ' ' + department.getName()
                 + "\n salary: " + salary + "\n birth date: " + birthDate + '\n';
+    }
+
+    /**
+     * Проверяет равенство данного объекта с указанным объектом.
+     *
+     * @param obj объект, с которым сравнивается данный объект.
+     * @return {@code true} если указанный объект также является
+     * объектом класса Employee и все его поля равны полям
+     * данного объекта, в противном случае {@code false}.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employee employee = (Employee) obj;
+        return id == employee.id &&
+                salary == employee.salary &&
+                Objects.equals(name, employee.name) &&
+                Objects.equals(gender, employee.gender) &&
+                Objects.equals(department, employee.department) &&
+                Objects.equals(birthDate, employee.birthDate);
+    }
+
+    /**
+     * Возвращает хэш-код данного объекта.
+     *
+     * @return хэш-код данного объекта.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, gender, department, salary, birthDate);
     }
 }
